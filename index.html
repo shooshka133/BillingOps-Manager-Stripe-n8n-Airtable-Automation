@@ -82,18 +82,8 @@
     <p>Join our readers and unlock premium digital content</p>
   </header>
 
-<!--   <img src="https://source.unsplash.com/featured/?books" alt="Bookshelf" class="hero-image" /> -->
-<!--   <img src="https://source.unsplash.com/random/800x600/?books" 
-     alt="Bookshelf" 
-     width="800" 
-     height="600"
-     class="hero-image"> -->
-<!--   <img src="https://source.unsplash.com/random/?books" 
-     alt="Bookshelf" 
-     style="display: block; width: 100%; max-width: 800px;"> -->
-<!--   <img src="https://via.placeholder.com/800x600" alt="Test"> -->
-  <img src="https://source.unsplash.com/800x300/?books" alt="Bookshelf" class="hero-image">
-
+  <!-- Dynamic Hero Image -->
+  <img id="hero-image" class="hero-image" alt="Bookshelf" />
 
   <div class="main">
     <h2>Start Your Reading Journey</h2>
@@ -104,6 +94,24 @@
   <footer>
     &copy; 2025 Shoosh Automation | Built with ❤️ and n8n
   </footer>
+
+  <!-- Dynamic Image Loader -->
+  <script>
+    const fallbackImages = [
+      "https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=800&h=300",
+      "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=800&h=300",
+      "https://images.unsplash.com/photo-1476958526483-36efcaa80cc4?auto=format&fit=crop&w=800&h=300"
+    ];
+
+    const dynamicImageUrl = "https://source.unsplash.com/random/800x300/?books";
+    const heroImg = document.getElementById("hero-image");
+
+    heroImg.src = dynamicImageUrl;
+    heroImg.onerror = function () {
+      const fallback = fallbackImages[Math.floor(Math.random() * fallbackImages.length)];
+      heroImg.src = fallback;
+    };
+  </script>
 
 </body>
 </html>
